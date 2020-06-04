@@ -7,5 +7,8 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
+
+# AWS uses EXPOSE though it means nothing on PC.
 # nginx starts automatically
